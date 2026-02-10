@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Question</title>
+  <link rel="stylesheet" href="css/payments.css">
+</head>
+<body>
+
+<div class="app-card">
+  <h2 id="questionTitle"></h2>
+
+  <h3>Answers</h3>
+  <div id="answers"></div>
+
+  <textarea
+    id="answerInput"
+    placeholder="Write your answer..."
+    rows="4">
+  </textarea>
+
+  <button class="btn" onclick="submitAnswer()">Submit Answer</button>
+
+  <p id="msg"></p>
+
+  <div class="btn-row">
+    <button class="btn-secondary" onclick="location.href='all-questions.html'">
+      Back
+    </button>
+    <button class="btn-secondary" onclick="location.href='profile.html'">
+      Profile
+    </button>
+  </div>
+</div>
+
+<script src="js/question-detail.js"></script>
+</body>
+</html>

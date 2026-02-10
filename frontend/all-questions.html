@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>All Questions</title>
+  <link rel="stylesheet" href="css/payments.css">
+</head>
+<body>
+
+<div class="app-card">
+  <h1>All Questions</h1>
+  <p class="subtitle">Click a question to view answers</p>
+
+  <ul id="questionList" class="question-list"></ul>
+
+  <div class="btn-row">
+    <button class="btn-secondary" onclick="location.href='questions.html'">
+      Ask Question
+    </button>
+    <button class="btn-secondary" onclick="location.href='profile.html'">
+      Profile
+    </button>
+    <!-- <button class="btn-danger" onclick="logout()">Logout</button> -->
+  </div>
+</div>
+
+<ul id="questionList" class="question-list"></ul>
+
+<script>
+const token = localStorage.getItem("token");
+
+function loadQuestions() {
+  fetch("/api/questions/all", {
+    headers: {
+      Authorization: "Bearer " + token
+    }
+  })
+  .then(res => res.json())
+  .then(data => {
+    const ul = document.getElementById("questionList");
+    ul.innerHTML = "";
+
+    if (!data.questions.length) {
+      ul.innerHTML = "<li>No questions yet</li>";
+      return;
+    }
+
+    data.questions.forEach(q => {
+      const li = document.createElement("li");
+      li.innerHTML = `
+        <strong>${q.title}</strong><br>
+        <small>Asked by ${q.asked_by}</small>
+      `;
+      li.style.cursor = "pointer";
+
+      li.onclick = () => {
+        location.href = `question-detail.html?id=${q.id}`;
+      };
+
+      ul.appendChild(li);
+    });
+  })
+  .catch(() => {
+    alert("Failed to load questions");
+  });
+}
+
+loadQuestions();
+</script>
+
+</body>
+</html>

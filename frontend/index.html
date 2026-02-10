@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta charset="UTF-8" />
+  <title>Public Space - Login</title>
+  <link rel="stylesheet" href="./css/main.css" />
+</head>
+<body>
+  <div class="auth-container">
+    <h1>Public Space</h1>
+
+    <div class="tabs">
+      <button id="tab-login" class="tab active">Login</button>
+      <button id="tab-register" class="tab">Register</button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="login-form" class="form active">
+      <h2>Login</h2>
+      <input type="email" id="login-email" placeholder="Email" required />
+      <br>
+      <br>
+      <div class="password-field">
+  <input type="password" id="login-password" placeholder="Password" required />
+<span class="eye" onclick="togglePassword('login-password', this)">👁️</span>
+</div>
+
+      <button type="submit">Login</button>
+      <p class="message" id="login-message"></p>
+      <p style="margin-top: 10px;">
+  <a href="forgot-password.html" style="color: blue; cursor: pointer;">
+    Forgot your password?
+  </a>
+</p>
+
+    </form>
+
+    <!-- Register Form -->
+    <!-- Registration form (clean HTML) -->
+<div class="reg-container">
+  <form id="register-form" class="reg-card" novalidate>
+    <h2 class="reg-title">Create Account</h2>
+
+    <div class="form-row">
+      <label for="name">Full name</label>
+      <input id="name" name="name" type="text" placeholder="Your full name" required />
+      <div class="error" id="err-name"></div>
+    </div>
+
+    <div class="grid-2">
+      <div class="form-row">
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" placeholder="username (no spaces)" />
+        <div class="hint">Letters, numbers, hyphen or underscore.</div>
+        <div class="error" id="err-username"></div>
+      </div>
+
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com" required />
+        <div class="error" id="err-email"></div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="form-row">
+        <label for="password">Password</label>
+        <div class="password-field">
+        <input id="password" name="password" type="password" placeholder="Choose a strong password" required />
+        <span class="eye" onclick="togglePassword('password', this)">👁️</span>
+        </div>
+        <div class="strength-bar" aria-hidden="true"><div class="strength-fill" id="strength-fill"></div></div>
+        <div class="error" id="err-password"></div>
+      </div>
+
+      <div class="form-row">
+        <label for="confirmPassword">Confirm password</label>
+        <div class="password-field">
+        <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Re-type password" required />
+         <span class="eye" onclick="togglePassword('confirmPassword', this)">👁️</span>
+        </div>
+        <div class="error" id="err-confirm"></div>
+      </div>
+    </div>
+
+    <div class="form-row checkbox-row">
+      <label class="checkbox-label"><input id="terms" type="checkbox" /> I agree to the register</label>
+      <div class="error" id="err-terms"></div>
+    </div>
+
+    <div class="form-row">
+      <button id="register-btn" type="submit" disabled>Register</button>
+    </div>
+
+    <div id="form-message" class="form-message"></div>
+  </form>
+</div>
+
+  </div>
+
+  <script src="./js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Upgrade Plan</title>
+  <link rel="stylesheet" href="css/payments.css">
+</head>
+<body>
+
+<div class="app-card">
+  <h1>Upgrade Your Plan</h1>
+  <div class="subtitle">Choose a plan that fits your learning goals</div>
+
+  <div class="plan" onclick="selectPlan('BRONZE')">
+    <div class="plan-info">
+      <h3>Bronze</h3>
+      <p>Post 5 questions per day</p>
+    </div>
+    <div class="price">₹100</div>
+  </div>
+
+  <div class="plan" onclick="selectPlan('SILVER')">
+    <div class="plan-info">
+      <h3>Silver</h3>
+      <p>Post 10 questions per day</p>
+    </div>
+    <div class="price">₹300</div>
+  </div>
+
+  <div class="plan" onclick="selectPlan('GOLD')">
+    <div class="plan-info">
+      <h3>Gold</h3>
+      <p>Unlimited questions</p>
+    </div>
+    <div class="price">₹1000</div>
+  </div>
+</div>
+
+<script>
+function selectPlan(plan) {
+  localStorage.setItem("selectedPlan", plan);
+  window.location.href = "fake-payment.html";
+}
+</script>
+
+</body>
+</html>

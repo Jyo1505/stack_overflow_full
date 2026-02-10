@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Secure Payment</title>
+  <link rel="stylesheet" href="css/payments.css">
+</head>
+<body>
+
+<div class="app-card">
+  <h1>Secure Payment</h1>
+  <div class="subtitle">Enter your card details</div>
+
+  <div class="form-group">
+    <label>Card Number</label>
+    <input id="cardNumber" placeholder="XXXX XXXX XXXX XXXX">
+  </div>
+
+  <div class="form-group">
+    <label>Card Holder Name</label>
+    <input id="cardName" placeholder="CARD HOLDER NAME">
+  </div>
+
+  <div class="form-group">
+    <label>CVV</label>
+    <input id="cvv" placeholder="XXX">
+  </div>
+
+  <button class="btn" onclick="pay()">Pay & Upgrade</button>
+
+  <div class="message" id="msg"></div>
+</div>
+
+<script src="js/payment.js"></script>
+</body>
+</html>

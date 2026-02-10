@@ -1,0 +1,349 @@
+/* ================================
+   DESIGN SYSTEM
+================================ */
+:root {
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --danger: #dc2626;
+
+  --bg-main: linear-gradient(135deg, #eef2ff, #f8fafc);
+  --card-bg: #ffffff;
+
+  --text-main: #0f172a;
+  --text-muted: #6b7280;
+
+  --border: #e5e7eb;
+
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+
+  --shadow-lg: 0 25px 60px rgba(0,0,0,0.12);
+  --shadow-md: 0 12px 30px rgba(0,0,0,0.08);
+
+  --transition: all 0.25s ease;
+}
+
+/* ================================
+   RESET
+================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ================================
+   PAGE BACKGROUND
+================================ */
+body {
+  min-height: 100vh;
+  background: var(--bg-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color: var(--text-main);
+}
+
+/* ================================
+   AUTH CONTAINER
+================================ */
+.auth-container {
+  width: 100%;
+  max-width: 760px;
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 36px 42px;
+  box-shadow: var(--shadow-lg);
+  animation: popIn 0.4s ease;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.auth-container h1 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 24px;
+  letter-spacing: -0.5px;
+}
+
+/* ================================
+   TABS
+================================ */
+.tabs {
+  display: flex;
+  background: #f1f5f9;
+  border-radius: 999px;
+  padding: 6px;
+  margin-bottom: 26px;
+}
+
+.tab {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 10px 0;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+
+.tab:hover {
+  color: var(--primary);
+}
+
+.tab.active {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(37,99,235,0.35);
+}
+
+/* ================================
+   FORMS VISIBILITY
+================================ */
+.form,
+.reg-card {
+  display: none;
+}
+
+.form.active,
+.reg-card.active {
+  display: block;
+  animation: fadeUp 0.3s ease;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================================
+   FORM HEADINGS
+================================ */
+.form h2,
+.reg-title {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 22px;
+}
+
+/* ================================
+   FORM LAYOUT
+================================ */
+.form-row {
+  margin-bottom: 16px;
+}
+
+.form-row label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--text-main);
+}
+
+/* ================================
+   INPUTS
+================================ */
+input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: #f9fafb;
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+
+input::placeholder {
+  color: #9ca3af;
+}
+
+input:focus {
+  outline: none;
+  background: #fff;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(37,99,235,0.15);
+}
+
+/* ================================
+   PASSWORD FIELD + EYE
+================================ */
+.password-field,
+.password-wrapper {
+  position: relative;
+}
+
+.password-field input,
+.password-wrapper input {
+  padding-right: 46px;
+}
+
+.eye {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+
+.eye:hover {
+  color: var(--primary);
+  transform: translateY(-50%) scale(1.15);
+}
+
+/* ================================
+   GRID
+================================ */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 680px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ================================
+   PASSWORD STRENGTH
+================================ */
+.strength-bar {
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.strength-fill {
+  height: 100%;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.strength-fill.weak { background: #ef4444; width: 33%; }
+.strength-fill.medium { background: #f59e0b; width: 66%; }
+.strength-fill.strong { background: #22c55e; width: 100%; }
+
+/* ================================
+   CHECKBOX
+================================ */
+.checkbox-row {
+  margin-top: 10px;
+}
+
+.checkbox-label {
+  display: flex;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ================================
+   BUTTONS
+================================ */
+button,
+#register-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: var(--primary);
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+button:hover,
+#register-btn:hover:not(:disabled) {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+#register-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ================================
+   MESSAGES
+================================ */
+.message,
+.form-message {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.error {
+  font-size: 0.8rem;
+  color: var(--danger);
+  margin-top: 4px;
+  min-height: 16px;
+}
+
+.hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ================================
+   LINKS
+================================ */
+a {
+  color: var(--primary);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 480px) {
+  .auth-container {
+    padding: 26px 22px;
+  }
+
+  .auth-container h1 {
+    font-size: 1.6rem;
+  }
+
+  .form h2,
+  .reg-title {
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Profile</title>
+  <link rel="stylesheet" href="css/payments.css">
+</head>
+<body>
+
+<div class="app-card">
+  <h1>My Profile</h1>
+
+  <div class="profile-box">
+    <p><strong>Name:</strong> <span id="myName"></span></p>
+    <!-- <p><strong>Email:</strong> <span id="myEmail"></span></p> -->
+    <p><strong>Points:</strong> <span id="myPoints"></span></p>
+  </div>
+
+  <hr>
+
+  <h3>Transfer Points</h3>
+
+  <select id="userSelect">
+  <option value="">Select user</option>
+</select>
+
+
+  <input
+    id="pointsToSend"
+    type="number"
+    placeholder="Points to transfer"
+  />
+
+  <button class="btn" onclick="transferPoints()">Transfer</button>
+
+  <p id="msg"></p>
+
+  <div class="btn-row">
+    <button class="btn-secondary" onclick="location.href='all-questions.html'">
+      Questions
+    </button>
+    <button class="btn-secondary" onclick="location.href='feed.html'">
+      Feed
+    </button>
+    <button class="btn-danger" onclick="logout()">Logout</button>
+  </div>
+</div>
+
+<script src="js/profile.js"></script>
+</body>
+</html>
