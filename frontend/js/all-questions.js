@@ -1,6 +1,6 @@
 const token = localStorage.getItem("token");
 
-fetch("/api/questions/all", {
+fetch(`${API_BASE}/api/questions/all`, {
   headers: { Authorization: "Bearer " + token }
 })
 .then(res => res.json())
@@ -17,7 +17,7 @@ fetch("/api/questions/all", {
     li.className = "question-item";
     li.innerHTML = `
       <strong>${q.title}</strong><br>
-      <small>Asked by ${q.name}</small>
+      <small>Asked by ${q.asked_by}</small>
     `;
     li.onclick = () => {
       window.location.href = `question-detail.html?id=${q.id}`;

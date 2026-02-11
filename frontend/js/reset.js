@@ -1,7 +1,8 @@
 const email = localStorage.getItem("resetEmail");
 
 function generate() {
-  fetch("https://stack-overflow-full.onrender.com/api/password/generate", {
+  fetch(`${API_BASE}/api/password/generate`, {
+
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email }),
@@ -15,7 +16,8 @@ function generate() {
 }
 
 function update() {
-  fetch("https://stack-overflow-full.onrender.com/api/password/update", {
+ fetch(`${API_BASE}/api/password/update`, {
+
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email }),

@@ -65,7 +65,8 @@ function pay() {
 
   msg.textContent = "Processing payment...";
 
-  fetch("/api/subscriptions/buy", {
+ fetch(`${API_BASE}/api/subscriptions/buy`, {
+
     method: "POST",
     headers: {
       "Content-Type": "application/json",

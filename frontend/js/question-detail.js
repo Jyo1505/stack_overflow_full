@@ -2,11 +2,16 @@ const token = localStorage.getItem("token");
 const params = new URLSearchParams(window.location.search);
 const questionId = params.get("id");
 
+fetch(`${API_BASE}/api/answers/add`)
+fetch(`${API_BASE}/api/answers/upvote`)
+fetch(`${API_BASE}/api/answers/downvote`)
+fetch(`${API_BASE}/api/answers/delete`)
+
 /* ===============================
    LOAD QUESTION
 ================================ */
 function loadQuestion() {
-  fetch(`/api/questions/${questionId}`, {
+  fetch(`${API_BASE}/api/questions/${questionId}`, {
     headers: { Authorization: "Bearer " + token }
   })
   .then(res => res.json())
@@ -20,7 +25,7 @@ function loadQuestion() {
    LOAD ANSWERS
 ================================ */
 function loadAnswers() {
-  fetch(`/api/answers/${questionId}/answers`, {
+  fetch(`${API_BASE}/api/answers/${questionId}/answers`, {
     headers: { Authorization: "Bearer " + token }
   })
   .then(res => res.json())
@@ -69,7 +74,7 @@ function submitAnswer() {
   const content = document.getElementById("answerInput").value.trim();
   if (!content) return alert("Write an answer");
 
-  fetch("/api/answers/add", {
+  fetch(`${API_BASE}/api/answers/add`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -88,7 +93,7 @@ function submitAnswer() {
    VOTES
 ================================ */
 function upvote(id) {
-  fetch("/api/answers/upvote", {
+  fetch(`${API_BASE}/api/answers/upvote`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -99,7 +104,7 @@ function upvote(id) {
 }
 
 function downvote(id) {
-  fetch("/api/answers/downvote", {
+  fetch(`${API_BASE}/api/answers/downvote`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -111,7 +116,7 @@ function downvote(id) {
 function deleteAnswer(id) {
   if (!confirm("Delete this answer?")) return;
 
-  fetch("/api/answers/delete", {
+  fetch(`${API_BASE}/api/answers/delete`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

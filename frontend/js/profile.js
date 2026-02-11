@@ -1,7 +1,7 @@
 const token = localStorage.getItem("token");
 
 function loadProfile() {
-  fetch("/api/users/me", {
+  fetch(`${API_BASE}/api/users/me`, {
     headers: { Authorization: "Bearer " + token }
   })
   .then(res => res.json())
@@ -13,7 +13,7 @@ function loadProfile() {
 
 }
 function loadUsers() {
-  fetch("/api/users/list", {
+fetch(`${API_BASE}/api/users/list`, {
     headers: { Authorization: "Bearer " + token }
   })
   .then(res => res.json())
@@ -41,7 +41,7 @@ function transferPoints() {
     return;
   }
 
-  fetch("/api/points/transfer", {
+ fetch(`${API_BASE}/api/points/transfer`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
