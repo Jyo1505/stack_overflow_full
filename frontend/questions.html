@@ -42,7 +42,8 @@ function postQuestion() {
 
   msg.textContent = "Posting question...";
 
-  fetch("/api/questions/create", {
+  fetch(`${API_BASE}/api/questions/create`, {
+
     method: "POST",
     headers: {
       "Content-Type": "application/json",

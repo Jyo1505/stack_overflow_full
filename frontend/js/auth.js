@@ -1,5 +1,5 @@
 // Tabs
-const BASE = API_BASE;
+// const BASE = API_BASE;
 
 const tabLogin = document.getElementById("tab-login");
 const tabRegister = document.getElementById("tab-register");
