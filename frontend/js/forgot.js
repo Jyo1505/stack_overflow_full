@@ -9,7 +9,7 @@ function checkEmail() {
     return;
   }
 
-  fetch("http://localhost:5000/api/password/forgot", {
+  fetch("https://stack-overflow-full.onrender.com/api/password/forgot", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email })

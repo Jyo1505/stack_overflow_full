@@ -15,7 +15,7 @@ function generate() {
 }
 
 function update() {
-  fetch("http://localhost:5000/api/password/update", {
+  fetch("https://stack-overflow-full.onrender.com/api/password/update", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email }),
