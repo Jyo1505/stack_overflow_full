@@ -108,6 +108,7 @@ myPostsEl.innerHTML = "";
   ? `<div class="post-media">
        <img src="${escapeHtml(p.media_url)}" alt="media" />
 
+
      </div>`
   : "";
  const dateStr = p.created_at ? new Date(p.created_at).toLocaleString() : "";
