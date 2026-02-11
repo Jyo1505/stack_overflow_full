@@ -1,11 +1,9 @@
+const BASE = API_BASE;
 const token = localStorage.getItem("token");
 const params = new URLSearchParams(window.location.search);
 const questionId = params.get("id");
 
-fetch(`${API_BASE}/api/answers/add`)
-fetch(`${API_BASE}/api/answers/upvote`)
-fetch(`${API_BASE}/api/answers/downvote`)
-fetch(`${API_BASE}/api/answers/delete`)
+
 
 /* ===============================
    LOAD QUESTION

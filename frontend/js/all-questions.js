@@ -1,3 +1,4 @@
+const BASE = API_BASE;
 const token = localStorage.getItem("token");
 
 fetch(`${API_BASE}/api/questions/all`, {

@@ -1,3 +1,4 @@
+const BASE = API_BASE;
 const token = localStorage.getItem("token");
 const plan = localStorage.getItem("selectedPlan");
 
