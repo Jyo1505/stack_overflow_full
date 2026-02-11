@@ -257,6 +257,10 @@ function getAllowedPostsPerDay(friendCount) {
 }
 
 exports.createPost = async (req, res) => {
+  console.log("Cloud name:", process.env.CLOUDINARY_NAME);
+console.log("API key:", process.env.CLOUDINARY_KEY);
+console.log("API secret:", process.env.CLOUDINARY_SECRET);
+
   try {
     const userId = req.user?.id;
     if (!userId) return res.status(401).json({ message: "Not authenticated" });
