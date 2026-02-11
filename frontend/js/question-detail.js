@@ -1,4 +1,4 @@
-const BASE = API_BASE;
+// const BASE = API_BASE;
 const token = localStorage.getItem("token");
 const params = new URLSearchParams(window.location.search);
 const questionId = params.get("id");

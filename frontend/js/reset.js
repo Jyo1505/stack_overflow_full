@@ -1,4 +1,4 @@
-const BASE = API_BASE;
+// const BASE = API_BASE;
 const email = localStorage.getItem("resetEmail");
 
 function generate() {

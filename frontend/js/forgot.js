@@ -1,4 +1,4 @@
-const BASE = API_BASE;
+// const BASE = API_BASE;
 function checkEmail() {
   const email = document.getElementById("email").value.trim();
   const msg = document.getElementById("msg");
