@@ -30,6 +30,9 @@
   "bcryptjs": "^3.0.3",
   
     
+  "cloudinary": "^1.41.3",
+  
+    
   "cors": "^2.8.5",
   
     
@@ -43,6 +46,9 @@
   
     
   "multer": "^2.0.2",
+  
+    
+  "multer-storage-cloudinary": "^4.0.0",
   
     
   "nodemailer": "^8.0.1",

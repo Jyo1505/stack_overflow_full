@@ -269,11 +269,24 @@ exports.createPost = async (req, res) => {
     let media_url = null;
     let media_type = "none";
 
-    if (req.file) {
-      media_url = `/uploads/${req.file.filename}`;
-      if (req.file.mimetype.startsWith("image/")) media_type = "image";
-      else if (req.file.mimetype.startsWith("video/")) media_type = "video";
-    } else if (req.body.media_url) {
+    // if (req.file) {
+    //   media_url = `/uploads/${req.file.filename}`;
+    //   if (req.file.mimetype.startsWith("image/")) media_type = "image";
+    //   else if (req.file.mimetype.startsWith("video/")) media_type = "video";
+    // }
+    const cloudinary = require("../config/cloudinary");
+
+if (req.file) {
+  const result = await cloudinary.uploader.upload(req.file.path, {
+    folder: "public_space_posts",
+    resource_type: "auto" // auto detects image/video
+  });
+
+  media_url = result.secure_url; // FULL CLOUDINARY URL
+  media_type = result.resource_type; // image or video
+}
+
+     else if (req.body.media_url) {
       media_url = req.body.media_url;
       media_type = "link";
     }
