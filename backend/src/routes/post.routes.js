@@ -58,6 +58,6 @@ router.post("/comment", auth, interactionController.commentPost);
 router.post("/share", auth, shareController.sharePost);
 
 // delete post route (expects { postId } in body)
-router.delete("/delete", auth, postController.deletePost);
+// router.delete("/delete", auth, postController.deletePost);
 
 module.exports = router;

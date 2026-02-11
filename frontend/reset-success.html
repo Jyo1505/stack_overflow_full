@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8" />
   <title>Reset Password</title>
   <link rel="stylesheet" href="css/main.css" />
@@ -12,18 +13,21 @@
     <p class="subtitle">
       Generate a temporary password and update it
     </p>
-
+<br>
     <input
       type="text"
       id="password"
       placeholder="Generated password"
       readonly
     />
-
+<br>
+<br>
     <div class="btn-group">
       <button onclick="generate()" class="secondary-btn">
         Generate Password
       </button>
+      <br>
+      <br>
       <button onclick="update()" class="primary-btn">
         Update Password
       </button>
