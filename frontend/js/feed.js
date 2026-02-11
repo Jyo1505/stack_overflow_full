@@ -1,3 +1,5 @@
+// Use backend URL from config.js
+const BASE = API_BASE;
 
 // feed.js - robust version
 (function () {
@@ -40,7 +42,7 @@ let currentUserId = null;
   // Load user and display welcome (safe)
   async function loadUser() {
     try {
-      const res = await fetch("/api/users/me", { headers: authHeader });
+      const res = await fetch(`${BASE}/api/users/me`, { headers: authHeader });
       if (!res.ok) {
         console.warn("Token invalid or expired, redirecting to login.");
         localStorage.removeItem("token");
@@ -70,7 +72,7 @@ if (!postsEl || !myPostsEl) {
 }
 
 
-      const res = await fetch("/api/posts/all", { headers: authHeader });
+      const res = await fetch(`${BASE}/api/posts/all`, { headers: authHeader });
       // if server returned HTML (404/error page) this will likely fail on res.json()
       let data;
       try {
@@ -218,7 +220,7 @@ function attachShareHandlers() {
       card.appendChild(chooser);
 
       try {
-        const fr = await fetch("/api/friends/list", { headers: authHeader });
+        const fr = await fetch(`${BASE}/api/friends/list`, { headers: authHeader });
         const frData = await fr.json().catch(() => ({}));
         if (!fr.ok) {
           chooser.innerHTML = `<div>Unable to load friends: ${frData.message || fr.status}</div>`;
@@ -262,7 +264,7 @@ function attachShareHandlers() {
             shareBtn.textContent = "Sharing...";
 
             try {
-              const res = await fetch("/api/posts/share", {
+              const res = await fetch(`${BASE}/api/posts/share`, {
                 method: "POST",
                 headers: authHeader,
                 body: JSON.stringify({ postId, targetId: f.id }),
@@ -324,6 +326,7 @@ function attachShareHandlers() {
     }
   });
 }
+
 function attachDeleteHandlers() {
   document.querySelectorAll('.delete-post-btn').forEach(btn => {
     const newBtn = btn.cloneNode(true);
@@ -335,7 +338,7 @@ function attachDeleteHandlers() {
       if (!confirm('Delete this post?')) return;
 
       try {
-        const res = await fetch('/api/posts/delete', {
+        const res = await fetch(`${BASE}/api/posts/delete`, {
           method: 'DELETE',
           headers: { ...authHeader, 'Content-Type': 'application/json' },
           body: JSON.stringify({ postId })
@@ -370,7 +373,7 @@ function attachDeleteHandlers() {
         if (!postId) return console.warn("like-btn missing data-id");
         const isUnlike = newBtn.textContent.trim().startsWith("Unlike");
         try {
-          const res = await fetch(`/api/posts/${isUnlike ? "unlike" : "like"}`, {
+          const res = await fetch(`${BASE}/api/posts/${isUnlike ? "unlike" : "like"}`, {
             method: "POST",
             headers: authHeader,
             body: JSON.stringify({ postId }),
@@ -418,7 +421,7 @@ function attachCommentHandlers() {
       const text = input.value.trim();
       if (!text) return;
       try {
-        const res = await fetch("/api/posts/comment", {
+        const res = await fetch(`${BASE}/api/posts/comment`, {
           method: "POST",
           headers: authHeader,
           body: JSON.stringify({ postId, text }),
@@ -501,14 +504,14 @@ function initPostCreation() {
         fd.append("media", file); // key must be "media"
         console.log("Sending FormData with file:", file.name, file.type, file.size);
 
-        res = await fetch("/api/posts/create", {
+        res = await fetch(`${BASE}/api/posts/create`, {
           method: "POST",
           headers, // DO NOT set Content-Type — browser will set multipart boundary
           body: fd
         });
       } else {
         // no file => send JSON fallback (server handles both)
-        res = await fetch("/api/posts/create", {
+        res = await fetch(`${BASE}/api/posts/create`, {
           method: "POST",
           headers: {
             ...headers,
@@ -561,7 +564,7 @@ function initPostCreation() {
     if (msgEl) msgEl.textContent = "Sending request...";
 
     try {
-      const res = await fetch("/api/friends/request", {
+      const res = await fetch(`${BASE}/api/friends/request`, {
         method: "POST",
         headers: authHeader,
         body: JSON.stringify({ receiverId }),
@@ -592,7 +595,7 @@ function initPostCreation() {
   // load friends list (renders Remove button)
 async function loadFriends() {
   try {
-    const res = await fetch("/api/friends/list", { headers: authHeader });
+    const res = await fetch(`${BASE}/api/friends/list`, { headers: authHeader });
     const data = await res.json().catch(() => ({}));
     if (!res.ok) {
       console.warn("/api/friends/list failed", data);
@@ -619,7 +622,7 @@ listEl.innerHTML = "";
         if (!confirm("Remove this friend?")) return;
 
         try {
-          const res = await fetch("/api/friends/remove", {
+          const res = await fetch(`${BASE}/api/friends/remove`, {
             method: "POST",
             headers: authHeader,
             body: JSON.stringify({ friendId }),
@@ -649,7 +652,7 @@ listEl.innerHTML = "";
 // loadOtherUsers - quick fix (client only)
 async function loadOtherUsers() {
   try {
-    const res = await fetch("/api/users/list", { headers: authHeader });
+    const res = await fetch(`${BASE}/api/users/list`, { headers: authHeader });
     const data = await res.json().catch(() => ({}));
     if (!res.ok) {
       console.warn("/api/users/list failed", data);
@@ -683,7 +686,7 @@ btn.disabled = true;
 btn.textContent = "Sending...";
 
 try {
-  const res = await fetch("/api/friends/request", {
+  const res = await fetch(`${BASE}/api/friends/request`, {
     method: "POST",
     headers: authHeader,
     body: JSON.stringify({ receiverId })
@@ -727,7 +730,7 @@ try {
 // load incoming friend requests (renders name only, no email)
 async function loadIncomingRequests() {
   try {
-    const res = await fetch("/api/friends/requests", { headers: authHeader });
+    const res = await fetch(`${BASE}/api/friends/request`, { headers: authHeader });
     const data = await res.json().catch(() => ({}));
 
     const listEl = document.getElementById("incoming-requests");
@@ -779,7 +782,7 @@ async function loadIncomingRequests() {
 // accept a friend request (uses requestId)
 async function acceptRequest(requestId) {
   try {
-    const res = await fetch("/api/friends/accept", {
+    const res = await fetch(`${BASE}/api/friends/accept`, {
       method: "POST",
       headers: authHeader,
       body: JSON.stringify({ requestId }),
@@ -808,7 +811,7 @@ async function acceptRequest(requestId) {
   // load post limit info
   async function loadPostLimit() {
     try {
-      const res = await fetch("/api/posts/limit", { headers: authHeader });
+      const res = await fetch(`${BASE}/api/posts/limit`, { headers: authHeader });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) {
         console.warn("/api/posts/limit failed", data);
@@ -853,20 +856,7 @@ async function acceptRequest(requestId) {
 
 })();
 
-// function showToast(message, type='info', duration=3500) {
-//   const container = document.getElementById('toast-container');
-//   if (!container) return alert(message); // fallback
-//   const el = document.createElement('div');
-//   el.className = `toast ${type}`;
-//   el.textContent = message;
-//   container.appendChild(el);
-//   // force reflow then show
-//   requestAnimationFrame(()=> el.classList.add('show'));
-//   setTimeout(()=> {
-//     el.classList.remove('show');
-//     setTimeout(()=> el.remove(), 250);
-//   }, duration);
-// }
+
 
 function initSectionTabs() {
   document.querySelectorAll(".tab-btn").forEach(btn => {
