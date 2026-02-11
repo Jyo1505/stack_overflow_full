@@ -734,7 +734,7 @@ try {
 // load incoming friend requests (renders name only, no email)
 async function loadIncomingRequests() {
   try {
-    const res = await fetch(`${BASE}/api/friends/request`, { headers: authHeader });
+    const res = await fetch(`${BASE}/api/friends/requests`, { headers: authHeader });
     const data = await res.json().catch(() => ({}));
 
     const listEl = document.getElementById("incoming-requests");
