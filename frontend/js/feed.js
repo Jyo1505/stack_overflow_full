@@ -1,5 +1,5 @@
 // Use backend URL from config.js
-// const BASE = API_BASE;
+const BASE = API_BASE;
 
 // feed.js - robust version
 (function () {
