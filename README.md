@@ -52,3 +52,5 @@ In some files there is commented code for mysql related so you can use it
 
 IMPORTANT NOTE: while deploy the project i used render(for backend ) and vercel(for frontend) and for db(it is neon). All platforms i used are free tier so basically while using the site it dont give immediate response so after click on link refresh the page first ( for awaken the backend and db ) . dont rush if it dont response immediately wait for bit cause(as per free tier it will take time) for response to your requests like login regiter etc
 
+https://stack-overflow-full.vercel.app/
+
