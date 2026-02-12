@@ -104,13 +104,28 @@ myPostsEl.innerHTML = "";
         const id = p.id ?? "";
         const userName = escapeHtml(p.user_name ?? "Unknown");
         const text = escapeHtml(p.content_text ?? "");
-        const media = p.media_url
-  ? `<div class="post-media">
-       <img src="${escapeHtml(p.media_url)}" alt="media" />
+        let media = "";
 
+if (p.media_url) {
+  if (p.media_type === "image") {
+    media = `
+      <div class="post-media">
+        <img src="${escapeHtml(p.media_url)}" alt="media" />
+      </div>
+    `;
+  } 
+  else if (p.media_type === "video") {
+    media = `
+      <div class="post-media">
+        <video controls width="100%">
+          <source src="${escapeHtml(p.media_url)}" type="video/mp4">
+          Your browser does not support video.
+        </video>
+      </div>
+    `;
+  }
+}
 
-     </div>`
-  : "";
  const dateStr = p.created_at ? new Date(p.created_at).toLocaleString() : "";
 
         // like/comment metadata from server (if present)
