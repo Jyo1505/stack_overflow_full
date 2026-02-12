@@ -15,7 +15,7 @@ function loadProfile() {
 
 }
 function loadUsers() {
-fetch(`${API_BASE}/api/users/list`, {
+fetch(`${API_BASE}/api/users/all`, {
     headers: { Authorization: "Bearer " + token }
   })
   .then(res => res.json())

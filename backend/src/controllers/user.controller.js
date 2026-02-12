@@ -118,3 +118,17 @@ exports.getProfile = async (req, res) => {
   );
   res.json(result.rows[0]);
 };
+
+exports.getAllUsersForTransfer = async (req, res) => {
+  try {
+    const result = await db.query(
+      "SELECT id, name FROM users WHERE id != $1 ORDER BY name ASC",
+      [req.user.id]
+    );
+
+    res.json({ users: result.rows });
+  } catch (err) {
+    console.error("getAllUsersForTransfer error:", err);
+    res.status(500).json({ message: "Server error" });
+  }
+};

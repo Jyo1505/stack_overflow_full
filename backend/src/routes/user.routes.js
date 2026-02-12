@@ -12,5 +12,6 @@ const auth = require("../middlewares/auth.middleware");
 router.get("/list", auth, controller.getOtherUsers);
 router.get("/search", auth, controller.searchUsers);
 router.get("/me", auth, controller.getProfile);
+router.get("/all", auth, controller.getAllUsersForTransfer);
 
 module.exports = router;
