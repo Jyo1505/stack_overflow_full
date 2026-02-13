@@ -28,13 +28,15 @@ Only uppercase + lowercase letters
 Users can post questions based on subscription plan limits:
 Plan	Price	Questions/Day
 Free	₹0	1
-Bronze	₹100/month	5
-Silver	₹300/month	10
-Gold	₹1000/month	Unlimited
+Bronze	₹100/month(	5 questions)
+Silver	₹300/month	(10 questions)
+Gold	₹1000/month(	Unlimited questions)
 
 Payment Rules
 Payments allowed only between 10 AM to 11 AM IST
 Payments outside this time window are blocked
+
+As per this is project not real world website i haven't user real payment getaways but do exactly same 
 
 After Successful Payment user can ask questions(user can upgrade plan , cant downgrade or buy same plan until its expire)
 
